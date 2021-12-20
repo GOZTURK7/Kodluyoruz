@@ -1,0 +1,27 @@
+
+/************************ layout *******************************/
+
+/* 
+Css'de açıklama satır 
+
+*/
+
+body {
+    background-color: black ;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Imperial Script', cursive;
+}
+h2 {
+    color: red; 
+    font-size: 64px;
+    text-transform: uppercase;
+}
+p {
+    color: white;  
+    font-size: 30px;}
+
+ul {
+    color: blue;
+}
+ 
