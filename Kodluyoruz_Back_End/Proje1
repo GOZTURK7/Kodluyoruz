@@ -1,0 +1,31 @@
+[22, 27, 16, 2, 18, 6] --> Insertion Sort;
+
+# Sort Aşamaları (Küçükten Büyüğe);
+##  öncelikle en küçük sayıyı buluyoruz 2 ve onu ilk indexteki sayı ile yer değiştiriyoruz [2, 27, 16, 22, 18, 6]
+
+sonra 2 yi ilk index'e sabitledik sonrakiler içinden [27, 16, 22, 18, 6] en küçüğü bulucam en başa koyucam 6 yeni liste [2,6,......] sabitlendi geriye kalanların en küçüğünü [27, 16, 22, 18] buluyorum burada 16 ve bu şekilde sona kadar devam ediyorum [2,6,16,18,22,27] haline gelene kadar ben her seferinde kalan eleman sayısının bir eksiği kadar işlem yapıyorum en küçüğü bulmak için yani 
+
+1. işlemde 6 elemanı tarıyorum ve 2'yi buluyorum sonra ikiy sabitliyorum geriye 5 eleman kalıyor,
+2. işlemde 5 elemanı tarıyorum ve 6'yı buluyorum 2'den hemen sonraya 6'yı sabitliyorum sonra 4 eleman kalıyor,
+3. işlem.......
+4. işlem.........
+5. işlem.......... 
+6. işlem ....... ve bitti
+
+
+1. satırda 6 tarama yaptım
+2. satırda 5 tarama,
+3. satırda 4
+4. satırda 3
+5. satırda 2
+6. satırda 1 işlem yaptım toplam n + (n-1) + (n-2)+....+1 kadar işlem yapmış oluyorum.
+
+yani benim Big O notation'ım O(n²) olmuş oluyor.
+
+Time Complexity;
+    baştan sona kadar kontrol etmesi gerektiğinden
+    avarage case ve worst case aynı O(n²)'dir ancak best case'de 
+    hepsi zaten küçükten büyüğe doğru sıralı ise bu durumda
+    O(n) olur.
+
+Dizi sıralandıktan sonra 18 sayısı Avarage Case time complexity'ye girer
