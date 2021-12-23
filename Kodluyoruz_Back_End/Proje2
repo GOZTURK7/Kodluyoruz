@@ -1,0 +1,24 @@
+
+
+[16, 21, 11, 8, 12, 22]
+
+1. ilk aşamada diziyi ikiye bölüyoruz
+[16, 21, 11]      ve          [8, 12, 22]
+2. ikinci aşamada tekrar ikiye bölüyoruz.
+[16] ,  [21, 11]          ve          [8] , [12, 22]
+3. üçüncü aşamada her ikiliyi kendi içinde sıralıyoru;
+[16] ,   [11], [21]        ve         [8],     [12], [22]
+
+4. dördüncü aşamada [16] ,[11, 21]      [8],     [12,22]
+5. aşamada bunların en küçükleri karşılaştırılıp o alınarak
+tekrar sırlama yapıyoruz
+[11, 16, 21]      ve [8, 12, 22]
+
+6. aşamada tekrar en küçük elemanları karşılaştırılıyor ilk saırdakiler
+hangisi küçükse o ilk index'e yazılıyor sonra aynı şekilde iki grubun
+ilk satırlarındakileri karşılaştırmaya devam edip sonuna geldiğimizde
+elimizde bu şekilde sorted halde bir liste kalıyor.
+[8, 11, 12, 16, 21, 22]
+
+Burada her seferinde eleman sayısının yarısı kadar işlem yaptığımızdan
+n/2 şeklinde 1'e kadar bölüyoruz bunun Big O gösterimi O(nlogn)
