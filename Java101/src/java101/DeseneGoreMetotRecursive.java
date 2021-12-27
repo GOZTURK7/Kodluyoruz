@@ -21,5 +21,6 @@ public class DeseneGoreMetotRecursive {
         return sayi + " " +desen(temp, i);
 
 
+
     }
 }
