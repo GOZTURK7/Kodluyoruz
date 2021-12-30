@@ -9,21 +9,24 @@ public class MineSweeper {
     static Scanner scan = new Scanner(System.in);
     static int satir;
     static int sutun;
-    static int boardYerlestirilecekMayinSayisi=satir*sutun/4;
+    static int boardYerlestirilecekMayinSayisi;
     static int isFinishCounter=0;
-    public String [][] board = new String[satir][sutun];
-    public String[][] boardMayinKonumlari = new String[satir][sutun];
+    public static String [][] board;
+    public static String[][] boardMayinKonumlari;
 
     public MineSweeper(int satir, int sutun) {
         this.sutun = sutun;
         this.satir = satir;
+        board= new String[satir][sutun];
+        boardMayinKonumlari = new String[satir][sutun];
+        boardYerlestirilecekMayinSayisi=satir*sutun/4;
 
     }
     public MineSweeper(){
 
     }
 
-    public void board(){
+    public static void board(){
         for(String [] w : board){
             for(int i=0; i<w.length; i++){
                 w[i]="_";
@@ -38,17 +41,16 @@ public class MineSweeper {
         }System.out.println("**************");
     }
 
-    public void boardMayinYerlestir(){
+    public static void boardMayinYerlestir(){
         Random rand = new Random();
         for (int i = 0; i < boardYerlestirilecekMayinSayisi ; i++) {
             int randSatirIndex = rand.nextInt(satir);
             int randSutunIndex = rand.nextInt(sutun);
-            //board[randSatirIndex][randSutunIndex]="*"; // bu satırı en son sileceğim !!!!!!!!!!!!!!! çünkü bu satır sadece boş boardu dolu getiriyor.
             boardMayinKonumlari[randSatirIndex][randSutunIndex]="*";
 
         }
     }
-    public void boardMayinKonumlari(){
+    public static void boardMayinKonumlari(){
         for(String [] w : boardMayinKonumlari) {
             for (int i = 0; i < w.length; i++) {
                    if(w[i]==null){
@@ -66,8 +68,8 @@ public class MineSweeper {
         }System.out.println("**************");
     }
 
-    public void run(){
-        System.out.println("Satir:" + satir + " Sutun:" + sutun);
+    public static void run(){
+
         boardMayinYerlestir();
         boardMayinKonumlari();
         board();
