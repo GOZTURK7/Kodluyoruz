@@ -1,3 +1,9 @@
+*.DS_Store
+*.jpg
+*.png
+*.docx
+
+
 # Default ignored files
 /shelf/
 /workspace.xml
