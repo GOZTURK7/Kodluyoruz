@@ -23,7 +23,7 @@ public class ToolStore extends NormalLoc{
                 case 0:
                     break;
                 default:
-                    System.out.println("Geçerli bir işlem siçin");
+                    System.out.println("Geçerli bir işlem seçin");
                     break;
 
             }
