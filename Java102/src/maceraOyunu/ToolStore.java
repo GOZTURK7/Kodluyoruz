@@ -8,26 +8,36 @@ public class ToolStore extends NormalLoc{
 
     @Override
     public boolean onLocatin() {
-        System.out.println("Dükkan Seçin: \n1. Silah Dükkanı\n2. Zırh Dükkanı");
-        int store = scan.nextInt();
-        switch(store) {
-            case 1:
-                buyWeapon();
+
+
+        while(true){
+            System.out.println("Dükkan Seçin: \n1. Silah Dükkanı\n2. Zırh Dükkanı \n0. Çıkış");
+            int store = scan.nextInt();
+            switch(store) {
+                case 1:
+                    store=buyWeapon();
+                    break;
+                case 2:
+                    store=buyArmor();
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Geçerli bir işlem siçin");
+                    break;
+
+            }
+            if(store == 0){
                 break;
-            case 2:
-                buyArmor();
-                break;
-            default:
-                break;
-
-        }
-
-
-
-        return true;
+            }
+        }return true;
     }
 
-    public void buyArmor(){
+
+
+
+
+    public int buyArmor(){
         System.out.println("ZIRHLAR :");
         Armor [] armors = {
                 new Armor(1),
@@ -39,8 +49,9 @@ public class ToolStore extends NormalLoc{
         }
 
         System.out.println("------------------------------------------------------------");
-        System.out.println("Almak İstdeğiniz Zırhın ID'sini Girin:");
+        System.out.println("Almak İstdeğiniz Zırhın ID'sini Girin:\nÇıkış İçin 0' Basın:");
         int armorSelection = scan.nextInt();
+        if(armorSelection==0) return 2;
         Armor armor = new Armor(armorSelection);
         if(this.getPlayer().getMoney() >= armor.getPrice()){
             this.getPlayer().inventory.setArmorName(armor.getName());
@@ -53,9 +64,10 @@ public class ToolStore extends NormalLoc{
         }
 
         this.getPlayer().characterInfo();
+        return 2;
     }
 
-    public void buyWeapon(){
+    public int buyWeapon(){
         System.out.println("SİLAHLAR :");
         Weapon [] weapons = {
                 new Weapon(1),
@@ -67,8 +79,9 @@ public class ToolStore extends NormalLoc{
         }
 
         System.out.println("------------------------------------------------------------");
-        System.out.println("Almak İstdeğiniz Silah ID'sini Girin:");
+        System.out.println("Almak İstdeğiniz Silah ID'sini Girin:\nÇıkış İçin 0' Basın:\"");
         int weaponSelection = scan.nextInt();
+        if(weaponSelection==0) return 1;
         Weapon silah = new Weapon(weaponSelection);
         if(this.getPlayer().getMoney() >= silah.getPrice()){
             this.getPlayer().inventory.setWeaponName(silah.getName());
@@ -81,7 +94,6 @@ public class ToolStore extends NormalLoc{
             System.out.println("Bütçeniz: "+ this.getPlayer().getMoney() + "TL, " +
                     "\nalmak istediğiniz silah: "+ silah.getPrice()+"TL \nBütçeniz Yetersiz.");
             System.out.println("----------------------------------------------------------------------");
-        }
-
+        }return 1;
     }
 }

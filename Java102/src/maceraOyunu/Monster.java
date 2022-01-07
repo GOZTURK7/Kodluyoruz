@@ -12,6 +12,7 @@ public abstract class Monster {
     private int orjinalHealth;
     private int money;
     private String award;
+    Random rand = new Random();
 
     public Monster(int id) {
        this.id = id;
@@ -48,6 +49,16 @@ public abstract class Monster {
                 this.money = 12;
                 this.award="Su";
                 break;
+            case 4:
+                int num = rand.nextInt(3)+3;
+                this.name="Yılan";
+                this.damage=num;
+                this.orjinalDamage=damage;
+                this.health=12;
+                this.orjinalHealth=health;
+                this.money=0;
+                this.award="Sürpriz Hediyeler !!";
+                break;
         }
 
 
@@ -56,7 +67,7 @@ public abstract class Monster {
     public void monsterInfo(Monster monster, int num){
        System.out.println("Canavar Bilgileri: \n"+
                "Canavar Sayısı : "+num+", Cavavar: " + this.name +
-               ", Hasar: "+ this.damage + ", Sağlık: "+ this.health + ", Money: "+ this.money);
+               ", Hasar: "+ this.damage + ", Sağlık: "+ this.health + ", Money: "+ this.money + ", Ödül: "+ this.award);
     }
 
 

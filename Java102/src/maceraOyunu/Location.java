@@ -6,7 +6,7 @@ import java.util.Scanner;
 public abstract class Location {
 
     private Player player;
-    private String LocName;
+    private String LocName="";
     protected Scanner scan = new Scanner(System.in);
     Random rand = new Random();
 

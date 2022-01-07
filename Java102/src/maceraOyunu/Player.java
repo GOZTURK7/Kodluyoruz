@@ -25,8 +25,8 @@ public class Player {
         switch(charID){
             case 1 :
                 this.damage=5;
-                this.health=50;
-                this.money=100;
+                this.health=21;
+                this.money=15;
                 this.orjinalHealth=health;
                 this.charName="Samuray";
                 break;

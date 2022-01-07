@@ -13,6 +13,7 @@ public class Game {
     Scanner scan = new Scanner(System.in);
     Player player;
     Location location;
+    static boolean isSafeHouse;
 
 
     public void start() {
@@ -27,13 +28,15 @@ public class Game {
             System.out.println("Nereye Gitmek İstersiniz: \n1. Güvenli Ev\n2. Araç Dükkanı\n3. Savaş\n0. Çıkış");
             int locSelection = scan.nextInt();
 
-            if (selectLoc(locSelection) == false) {
+            if (!selectLoc(locSelection)) {
                 System.out.println(player.getName() + " OYUNU KAYBETTİN !!!");
                 System.out.println("GAME OVER !!!! ");
                 break;
             }else{
-                if(player.inventory.isWater() && player.inventory.isFood() && player.inventory.isFireWood()){
+                if(player.inventory.isWater() && player.inventory.isFood() && player.inventory.isFireWood()
+                        && isSafeHouse){
                     System.out.println(player.getName() + ", TÜM ÖDÜLLERİ TOPLADIN \nOYUNU KAZANDIN !!!");
+                    break;
                 }
             }
             if(locSelection==0){
@@ -49,8 +52,9 @@ public class Game {
         boolean isAlive = true;
         switch (locSelection) {
             case 1:
-                location = new SafeHouse(this.player, "Güvenli Ev");
+                location = new SafeHouse(this.player, "Guvenli Ev");
                 isAlive=location.onLocatin();
+                isSafeHouse=true;
                 break;
             case 2:
                 location = new ToolStore(this.player, "Araç Dükkanı");
@@ -58,38 +62,61 @@ public class Game {
                isAlive=location.onLocatin();
                 break;
             case 3:
-                System.out.println("Lütfen Savaş Alanı Seçiniz \n1. Magara,\n2. Orman,\n3. Nehir, \n0. Çıkış");
+                System.out.println("Lütfen Savaş Alanı Seçiniz \n1. Magara,\n2. Orman,\n3. Nehir, \n4. Maden \n0. Çıkış");
                 int battleLoc = scan.nextInt();
-                switch (battleLoc) {
-                    case 1:
-                        System.out.println("Mağaraya Hoş Geldin:");
-                        BattleLoc cave   = new Cave(this.player, "Mağara", new Zombie(1));
-                        cave.createMonsters(cave.getMonster());
-                        isAlive = cave.onLocatin();
-                        break;
-                    case 2:
-                        System.out.println("Ormana Hoş Geldin:");
-                        BattleLoc forest   = new Forest(this.player, "Orman", new Vampire(2));
-                        forest.createMonsters(forest.getMonster());
-                        isAlive = forest.onLocatin();
-                        break;
-                    case 3:
-                        System.out.println("Nehire Hoş Geldin:");
-                        BattleLoc river   = new River(this.player, "Nehir", new Bear(3));
-                        river.createMonsters(river.getMonster());
-                        isAlive = river.onLocatin();
-                        break;
-                    case 0:
-                        break;
+                if(isAwardGained(battleLoc)){
+                    switch (battleLoc) {
+                        case 1:
+                            System.out.println("Mağaraya Hoş Geldin:");
+                            BattleLoc cave   = new Cave(this.player, "Mağara", new Zombie(1));
+                            cave.createMonsters(cave.getMonster());
+                            isAlive = cave.onLocatin();
+                            break;
+                        case 2:
+                            System.out.println("Ormana Hoş Geldin:");
+                            BattleLoc forest   = new Forest(this.player, "Orman", new Vampire(2));
+                            forest.createMonsters(forest.getMonster());
+                            isAlive = forest.onLocatin();
+                            break;
+                        case 3:
+                            System.out.println("Nehire Hoş Geldin:");
+                            BattleLoc river   = new River(this.player, "Nehir", new Bear(3));
+                            river.createMonsters(river.getMonster());
+                            isAlive = river.onLocatin();
+                            break;
+                        case 4:
+                            System.out.println("Madene Hoşgeldiniz:");
+                            BattleLoc mine = new Mine(this.player, "Maden", new Snake(4));
+                            mine.createMonsters(mine.getMonster());
+                            isAlive = mine.onLocatin();
+                            break;
+                        case 0:
+                            break;
+                    }
                 }
                 break;
             case 0:
                 break;
             default:
                 System.out.println("Geçerli Bir Lokasyon ID'si Girin:");
+                break;
 
         }
         return isAlive;
+    }
+
+    public boolean isAwardGained(int battleLoc){
+        if(battleLoc==1 && player.inventory.isFood()){
+            System.out.println("Mağara Etabını Bitirdiniz Tekrar Giremezsiniz!!!");
+            return false;
+        }else if(battleLoc==2 && player.inventory.isFireWood()){
+            System.out.println("Orman Etabını Bitirdiniz Tekrar Giremezsiniz!!!");
+            return false;
+        }else if(battleLoc==3 && player.inventory.isWater()){
+            System.out.println("Nehir Etabını Bitirdiniz Tekrar Giremezsiniz!!!");
+            return false;
+        }
+        return true;
     }
 
     public void charSelection(String playerName) {
