@@ -66,21 +66,12 @@ public class Book implements Comparable<Book>{
                 '}';
     }
 
+
     @Override
     public int compareTo(Book o) {
-        Book other = null;
-        if(o instanceof Book){
-            other=(Book) o;
-        }
-
-        if(this.name.compareTo(other.getName()) > 0){
-            System.out.println(this);
-        }else if(this.name.compareTo(other.getName()) < 0){
-            System.out.println(other.getName());
-        }
-
-        return this.name.compareTo(other.getName());
+        return this.getName().compareTo(o.getName());
     }
+
 
 
 }

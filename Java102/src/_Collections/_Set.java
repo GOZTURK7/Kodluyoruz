@@ -30,6 +30,8 @@ public class _Set {
         // 2) FOREACH KULLANABİLİRİZ.
 
 
+        System.out.println("direkt"+hSet);
+
 
 
         //) 2) foreach
