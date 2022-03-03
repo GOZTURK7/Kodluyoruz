@@ -15,6 +15,11 @@ public class _LinkedHashMap_and_TreeMap {
 
         for(Student stu : students.values()) {
             System.out.println(stu.getName());
+
+//            buradaki comparator clasının içinde override ettiğimiz compare methodu
+//            Map'lerde key'in veritipine göre sıralamasını sağlıyor TreeSet'lerdeki
+//            comparator'den farkı bu, burada OrderByNoComparator klasıını Comparator<Intger> şeklinde
+//            implement ediyoruz çünkü key veri tipi burada int o yüzden bu şekilde yaptık.
         }
 
 
