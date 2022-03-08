@@ -1,4 +1,4 @@
-package fiksturOlusturucu;
+package fiksturOlusturucu1;
 
 public class Fikstur {
 
