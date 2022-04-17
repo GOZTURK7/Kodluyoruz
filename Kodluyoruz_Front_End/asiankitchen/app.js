@@ -83,36 +83,74 @@ const menu = [
   ];
 
 
+  // SELECTING HTML TAGS TO PUT BUTTONS AND FOODS CONTENT;
   const buttons = document.querySelector(".btn-container");
   const menuI = document.querySelector(".section-center");
 
+  // PUT THE BUTTONS; 
   buttons.innerHTML = `
-    <button class="btn-item">All</button>
-    <button class="btn-item">Japan</button>
-    <button class="btn-item">Korea</button>
-    <button class="btn-item">chinea</button>
+    <button class="btn-item" id=1>All</button>
+    <button class="btn-item" id=2>Japan</button>
+    <button class="btn-item" id=3>Korea</button>
+    <button class="btn-item" id=4>chinea</button>
   
   `;
 
 
-  let list = "";
 
-    menu.forEach((item)=>{
+    // ALL FOODS LİST
+    let list = "";
+    // CREATE ALL FOODS LİST AND ADD TO 'list' ABOVE;
+  const menuAll = menu.forEach((item)=>{
       list+=`
-      <div class="col-md-6 d-flex mt-3" data-id="${item.id} data-category="${item.category}>
+    <div class="col-md-6 d-flex mt-3 menu-items" data-id="${item.id}"       data-category="${item.category}">
 
         <img src="${item.img}" class="photo">
-        <div class=" ms-3">
-          <h4 class="menu-title">${item.title}<span>${item.price}</span> </h4>
-        <p class="menu-text ">${item.desc}</p>
+        <div class="container-fluid ms-3">
+          <h4 class="menu-title">${item.title}<span>${item.price}</span></h4>
+          <p class="menu-text ">${item.desc}</p>
         </div>
 
     </div>
       `
+
+      menuI.innerHTML = list;
+
     });
+  
 
-  menuI.innerHTML = list;
+    // JAPAN FOODS LİST
+    let japan = document.querySelectorAll("div[data-category='Japan']");
+    // KOREA FOODS LİST
+    let korea = document.querySelectorAll("div[data-category='Korea']");
+    // CHINA FOODS LİST
+    let china = document.querySelectorAll("div[data-category='China']");
 
-  let japans = document.querySelectorAll("div[data-category]");
 
-  console.log(japans);
+    // ADD EVENTLISTENER TO SELECT THE FOOD CATEGORY;
+    document.querySelector(".btn-container").addEventListener("click",(e)=>{
+
+      let clickedId = e.target.id;
+      console.log(clickedId);
+      
+
+      switch (true) {
+        case clickedId == 1:
+          menuI.innerHTML="";
+          menuI.innerHTML = list
+          break;
+        case clickedId == 2:
+          menuI.innerHTML="";
+          japan.forEach(item => menuI.appendChild(item));
+          break;
+        case clickedId == 3:
+          menuI.innerHTML="";
+          korea.forEach(item => menuI.appendChild(item));
+          break;
+        case clickedId == 4:
+          menuI.innerHTML="";
+          china.forEach(item => menuI.appendChild(item));
+          break;
+      }
+
+    })
