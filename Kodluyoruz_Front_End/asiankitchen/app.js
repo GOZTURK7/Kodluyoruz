@@ -154,3 +154,5 @@ const menu = [
       }
 
     })
+
+   console.log(typeof "123"); 
