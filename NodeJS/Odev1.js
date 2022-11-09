@@ -3,3 +3,4 @@ function Alan(yarıcap){
     console.log(alan);
      }
     
+     
